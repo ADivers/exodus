@@ -1,23 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<html>
+		<head>
+			<!--Import Google Icon Font-->
+			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-	<title>Our Totally Rad CRM Page</title>
+			<!--Let browser know website is optimized for mobile-->
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		</head>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
+			<body>
+				<!--Import jQuery before materialize.js-->
+				<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+				<!-- Compiled and minified CSS -->
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-    <style type="text/css" src="./style.css"></style>
+				<!-- Compiled and minified JavaScript -->
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+				<style type="text/css" src="./style.css"></style>
 
-  </body>
+<!-- SIDE BAR -->
+				<ul id="slide-out" class="side-nav">
+					<li><div class="user-view">
+						<div class="background">
+							<img src="images/office.jpg">
+						</div>
+					<a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
+					<a href="#!name"><span class="white-text name">John Doe</span></a>
+					<a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+					</div></li>
+					<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+					<li><a href="#!">Second Link</a></li>
+					<li><div class="divider"></div></li>
+					<li><a class="subheader">Subheader</a></li>
+					<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+				</ul>
+				<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+<!-- END SIDE BAR -->
+<!-- BODY -->
+				<h1>Admin Page</h1>
+
+					<h3>Posts</h3>
+					<h3>Galleries</h3>
+					<h3>Enqueries</h3>
+					<h3>Users</h3>
+					<h3>Test</h3>
+
+
+
+			</body>
+
+		<script type="text/javascript">
+
+			// Initialize collapse button
+			$(".button-collapse").sideNav();
+			// Initialize collapsible (uncomment the line below if you use the dropdown variation)
+			// $('.collapsible').collapsible();
+
+			// Show sideNav
+			$('.button-collapse').sideNav('show');
+			// Hide sideNav
+			$('.button-collapse').sideNav('hide');
+			// Destroy sideNav
+			$('.button-collapse').sideNav('destroy');
+
+		</script>
 </html>
+
