@@ -9,7 +9,7 @@ client.messages
   .create({
     to: '+19149809150',
     from: '+12027987897',
-    body: "Tomorrow's forecast in Financial District, San Francisco is Clear",
+    body: "Welcome to Exodus!",
     // mediaUrl: 'https://climacons.herokuapp.com/clear.png',
   })
   .then((message) => console.log(message.sid));
