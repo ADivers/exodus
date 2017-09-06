@@ -6,28 +6,30 @@
           Register an Account
         </div>
         <div class="card-body">
+         
           <form class="create-update-form" action="/api/users" method="POST">
+          <!-- First Name  -->
             <div class="form-group">
               <div class="form-row">
                 <div class="col-md-6">
-                  <label for="exampleInputName">First name:</label>
+                  <label for="first_name">First name:</label>
                   <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Enter first name">
                 </div>
-
+            <!-- Last Name  -->
                 <div class="col-md-6">
-                  <label for="exampleInputLastName">Last name:</label>
+                  <label for="last_name">Last name:</label>
                   <input type="text" class="form-control" id="exampleInputLastName" aria-describedby="nameHelp" placeholder="Enter last name">
                 </div>
               </div>
             </div>
             <!-- Email address -->
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
+              <label for="email_address">Email address</label>
               <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
             </div>
-
+            <!-- Phone Number(it will need to connected to the backend) -->
                <div class="form-group">
-              <label for="exampleInputEmail1">Phone Number</label>
+              <label for="phone_number">Phone Number</label>
               <input type="phonenumber" class="form-control" id="exampleInputhonenumber" aria-describedby="phoneHelp" placeholder="Enter phonenumber">
             </div>
             
@@ -35,7 +37,7 @@
             </div>
             <a class="btn btn-primary btn-block" href="login.html">Register</a>
           </form>
-         
+        
         </div>
       </div>
     </div>
