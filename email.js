@@ -3,10 +3,10 @@ var nodemailer = require('nodemailer');
 var path = require('path');
 var fs = require('fs')
 
-var template = fs.readFileSync(path.join(__dirname, "/hero.html"))
+var template = fs.readFileSync(path.join(__dirname, "/welcomeEmail.html"))
 
-var fromEmail = ''; // add email of the gmail you are sending from
-var password =  ''  // add gmail password
+var fromEmail = 'exoduscrmtest@gmail.com'; // add email of the gmail you are sending from
+var password =  'exodustest'  // add gmail password
 
 var emailTo = [
     'divers1776@gmail.com',
@@ -26,7 +26,7 @@ var transporter = nodemailer.createTransport({
 var mailOptions = {
   from: fromEmail,
   to: emailTo,
-  subject: 'Sending Email using Node.js',
+  subject: 'Test Email',
   html: template
 };
 
