@@ -4,5 +4,8 @@
     "osx": {
         "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
     },
-    "args": ["${file}"]
+
+    "args": [
+        "${file}"
+    ]
 }
