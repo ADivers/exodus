@@ -7,8 +7,8 @@ const authToken = 'f33a199e73ca24323a8a898629b69adb';
 const client = require('twilio')(accountSid, authToken);
 client.messages
   .create({
-    to: '+19149809150',
-    from: '+12027987897',
+    to: '+19149809150',  // User Number(s)
+    from: '+12027987897', // Twilio Number
     body: "Welcome to Exodus!",
     // mediaUrl: 'https://climacons.herokuapp.com/clear.png',
   })
