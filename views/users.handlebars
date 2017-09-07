@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">    
+        <div class="col-12">
+		    <div class="input-group">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Filter by
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a id='dropdown-name' class="dropdown-item" href="#">Name</a>
+                        <a id='dropdown-email' class="dropdown-item" href="#">Email</a>
+                        <a id='dropdown-phone' class="dropdown-item" href="#">Phone</a>
+                    </div>
+                </div>
+                <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+                <span class="input-group-btn">
+                    <button id="btn-search" class="btn btn-primary" type="button">Search</button>
+                </span>
+            </div>
+        </div>
+	</div>
+</div>
+
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Contact Mode</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each users}}
+        <tr>
+            <th scope="row">1</th>
+            <td>{{this.first_name}}</td>
+            <td>{{this.last_name}}</td>
+            <td>{{this.email_address}}</td>
+            <td>{{this.phone_number}}</td>
+            <td>{{this.contact_mode}}</td>
+        </tr>
+    {{/each}}
+  </tbody>
+</table>
