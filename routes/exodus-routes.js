@@ -13,26 +13,21 @@ var db = require("../models");
 module.exports = function(app) {
 
   // GET route for getting all of the posts
-  app.get("/api/users", function(req, res) {
-    var query = {};
-    if (req.query.user_id) {
-      query.UserId = req.query.user_id;
-    }
-    // Here we add an "include" property to our options in our findAll query
-    // We set the value to an array of the models we want to include in a left outer join
-    // In this case, just db.Author
-    db.User.findAll({
-      where: query
-    }).then(function(dbUser) {
-      res.json(dbUser);
+  app.get("/users", function(req, res) {
+
+    db.User.findAll().then(function(dbUser) {
+      var hbsObject = {
+        users: dbUser
+      };
+      console.log(hbsObject);
+      // res.json(dbUser);
+      res.render("users", hbsObject);
     });
   });
 
   // Get rotue for retrieving a single user
-  app.get("/api/users/:id", function(req, res) {
-    // Here we add an "include" property to our options in our findOne query
-    // We set the value to an array of the models we want to include in a left outer join
-    // In this case, just db.Author
+  app.get("/users/:id", function(req, res) {
+
     db.User.findOne({
       where: {
         id: req.params.id
@@ -43,14 +38,14 @@ module.exports = function(app) {
   });
 
   // POST route for saving a new user
-  app.post("/api/users", function(req, res) {
+  app.post("/users", function(req, res) {
     db.User.create(req.body).then(function(dbUser) {
       res.json(dbUser);
     });
   });
 
   // DELETE route for deleting users
-  app.delete("/api/users/:id", function(req, res) {
+  app.delete("/users/:id", function(req, res) {
     db.User.destroy({
       where: {
         id: req.params.id
@@ -61,7 +56,7 @@ module.exports = function(app) {
   });
 
   // PUT route for updating users
-  app.put("/api/users", function(req, res) {
+  app.put("/users", function(req, res) {
     db.User.update(
       req.body,
       {
