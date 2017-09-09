@@ -305,7 +305,7 @@
                   </div>
 
           </div>
-          <button type="button" id="sendEmail" class="btn btn-secondary btn-lg">Send Email</button>
+          <button type="button" id="btn-sendEmail" class="btn btn-secondary btn-lg">Send Email</button>
         </div>
 
 
@@ -363,10 +363,20 @@
     <!-- Custom scripts for this template -->
     <script src="js/sb-admin.min.js"></script>
 
+    <script type="text/javascript">
 
-     <!-- EMAIL CONTROLSSSSSS/? -->
-    <script src="../email.js">
-    </script>
+      $(document).ready(function()
+      { 
+        $('#btn-sendEmail').click(function() {
+          console.log("got clicked")
+          $.get("/email/api/send", function( data ) {
+            alert( "Email was send." );
+          });
+        });
+      });
+
+  </script>
+
 
   </body>
 
