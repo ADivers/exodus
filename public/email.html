@@ -315,7 +315,7 @@
 
                 </div>
           </div>
-          <button type="button" class="btn btn-secondary btn-lg">Send Email</button>
+          <button type="button" id="btn-sendEmail" class="btn btn-secondary btn-lg">Send Email</button>
         </div>
 
 
@@ -374,12 +374,17 @@
     <script src="js/sb-admin.min.js"></script>
 
     <script type="text/javascript">
-      $(function () {
-          $('#datetimepicker12').datetimepicker({
-              inline: true,
-              sideBySide: true
+
+      $(document).ready(function()
+      { 
+        $('#btn-sendEmail').click(function() {
+          console.log("got clicked")
+          $.get("/email/api/send", function( data ) {
+            alert( "Email was send." );
           });
+        });
       });
+
   </script>
 
   </body>
