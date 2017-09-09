@@ -174,7 +174,15 @@
             Text Message
           </div>
           <div class="card-body">
-                Message:
+
+            User Group:
+              <select name="userGroup" id="userGroupChoices"></select>
+            
+            Message:
+                <select id="textMessageContentChoices">
+
+                </select>
+                <div id="textMessage-strings-appear-here"></div>
                 <textarea name="tmContent" id="tmContent" cols="30" rows="10"></textarea>
                 <button id="textSubmit" onclick="textContentCapture()">Submit</button>
                 <div id="postText"></div>
@@ -237,6 +245,96 @@
 
     <!-- text message script -->
     <script>
+      var userGroup = {
+        "": "",
+        "Weekly Users": "Michael",
+        "Bi-Monthly Users": "Mark",
+        "Monthly Users": "Reggie",
+      };
+      var userDropdown = "";
+      var chosenUserGroup = "";
+
+          // Create buttons function by looping through object
+          function createDropDownOptionsUserGroup() {
+
+          for (var key in userGroup) {
+            if (userGroup.hasOwnProperty(key)) {
+
+          // creating and storing a option tag
+              var userDropdown = $("<option>");
+
+          // labeling the option with the key 
+              userDropdown.text(key);
+                
+              if (key) {        // if key has a value then run below. this doesnt write the empty value on the html
+                
+                // store the key value of message content
+                    var userDropdownValue = $("<p>").text(key + ": " + userGroup[key]);
+
+                // Setting the value attribute of the message to the option
+                      userDropdown.attr("value", userGroup[key]);
+              }
+
+                // appending the option to the html
+                    $("#userGroupChoices").append(userDropdown);
+                
+              }
+            }
+          };
+
+            $('#userGroupChoices').change(function() {
+              var chosenUserGroup = $('#userGroupChoices').val();
+              console.log(chosenUserGroup);
+            });
+
+
+      var messageTemplate = {
+          "": "",
+          Welcome: "Dear " + chosenUserGroup + ", \n\nThanks for signing up to the best CRM in town!\n\n" + "Regards,\nTeam Exodus",
+          Yo: "Hey",
+      };
+
+      var messageDropdown = "";
+
+      // Create buttons function by looping through object
+          function createDropDownOptionsContent() {
+
+          for (var key in messageTemplate) {
+            if (messageTemplate.hasOwnProperty(key)) {
+
+          // creating and storing a option tag
+              var messageDropdown = $("<option>");
+
+          // labeling the option with the key 
+              messageDropdown.text(key);
+                
+              if (key) {        // if key has a value then run below. this doesnt write the empty value on the html
+                
+                // store the key value of message content
+                    var messageDropdownValue = $("<p>").text(key + ": " + messageTemplate[key]);
+
+                // Setting the value attribute of the message to the option
+                      messageDropdown.attr("value", messageTemplate[key]);
+              }
+
+                // appending the option to the html
+                    $("#textMessageContentChoices").append(messageDropdown);
+
+                // appending the message templates to the html
+                    $("#textMessage-strings-appear-here").append(messageDropdownValue);
+                
+              }
+            }
+          };
+
+            $('#textMessageContentChoices').change(function() {
+              var messageOnScreen = $('#textMessageContentChoices').val();
+              $('#tmContent').html(messageOnScreen);
+            });
+
+createDropDownOptionsUserGroup();
+createDropDownOptionsContent();
+
         function textContentCapture() {
             var x = document.getElementById("tmContent").value;
             console.log(x);

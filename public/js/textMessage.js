@@ -12,6 +12,8 @@ function textContentCapture() {
     console.log(x);
 };
 
+var 
+
 function sendText(function() {
             // Twilio Credentials
             const accountSid = 'AC754877e3fb03a0cd449bff55e9fcfea9';
