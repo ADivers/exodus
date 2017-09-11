@@ -247,12 +247,13 @@
     <script>
       var userGroup = {
         "": "",
-        "Weekly Users": "Michael",
-        "Bi-Monthly Users": "Mark",
-        "Monthly Users": "Reggie",
+        "Weekly Users": "Weekly Users",
+        "Bi-Monthly Users": "Bi-Monthly Users",
+        "Monthly Users": "Monthly Users",
       };
       var userDropdown = "";
       var chosenUserGroup = "";
+      var messageType = "";
 
           // Create buttons function by looping through object
           function createDropDownOptionsUserGroup() {
@@ -285,13 +286,22 @@
             $('#userGroupChoices').change(function() {
               var chosenUserGroup = $('#userGroupChoices').val();
               console.log(chosenUserGroup);
+              var messageTemplate = {
+                  "": "",
+                  Welcome: "Dear " + chosenUserGroup + ", \n\nThanks for signing up to the best CRM in town!\n\n" + "Regards,\nTeam Exodus",
+                  Yo: "Hey",
+                  "Another Message": "Dear " + chosenUserGroup + ", \n\nHere's another message!!" + "\n\nRegards,\nTeam Exodus",
+                };
             });
 
+// render function to render message again
+// takes both userGroup and messageTemplate and returns correct string
 
       var messageTemplate = {
           "": "",
           Welcome: "Dear " + chosenUserGroup + ", \n\nThanks for signing up to the best CRM in town!\n\n" + "Regards,\nTeam Exodus",
           Yo: "Hey",
+          "Another Message": "Dear " + chosenUserGroup + ", \n\nHere's another message!!" + "\n\nRegards,\nTeam Exodus",
       };
 
       var messageDropdown = "";
@@ -328,31 +338,41 @@
           };
 
             $('#textMessageContentChoices').change(function() {
-              var messageOnScreen = $('#textMessageContentChoices').val();
-              $('#tmContent').html(messageOnScreen);
+              var messageType = $('#textMessageContentChoices').val();
+              $('#tmContent').html(renderMessage());
             });
+
+            function renderMessage() {
+              var messageTemplate = {
+                  Welcome: "Dear " + chosenUserGroup + ", \n\nThanks for signing up to the best CRM in town!\n\n" + "Regards,\nTeam Exodus",
+                  Yo: "Hey",
+                  "Another Message": "Dear " + chosenUserGroup + ", \n\nHere's another message!!" + "Regards,\nTeam Exodus",
+              };
+
+              return messageTemplate[messageType];
+            }
 
 createDropDownOptionsUserGroup();
 createDropDownOptionsContent();
 
-        function textContentCapture() {
-            var x = document.getElementById("tmContent").value;
-            console.log(x);
+        // function textContentCapture() {
+        //     var x = document.getElementById("tmContent").value;
+        //     console.log(x);
 
-            // Twilio Credentials
-            const accountSid = 'AC754877e3fb03a0cd449bff55e9fcfea9';
-            const authToken = 'f33a199e73ca24323a8a898629b69adb';
-            // require the Twilio module and create a REST client
-            const client = require('twilio')(accountSid, authToken);
-            client.messages
-            .create({
-                to: '+19149809150',  // User Number(s)
-                from: '+12027987897', // Twilio Number
-                body: x,
-                // mediaUrl: 'https://climacons.herokuapp.com/clear.png',
-            })
-            .then((message) => console.log(message.sid));
-        };
+        //     // Twilio Credentials
+        //     const accountSid = 'AC754877e3fb03a0cd449bff55e9fcfea9';
+        //     const authToken = 'f33a199e73ca24323a8a898629b69adb';
+        //     // require the Twilio module and create a REST client
+        //     const client = require('twilio')(accountSid, authToken);
+        //     client.messages
+        //     .create({
+        //         to: '+19149809150',  // User Number(s)
+        //         from: '+12027987897', // Twilio Number
+        //         body: x,
+        //         // mediaUrl: 'https://climacons.herokuapp.com/clear.png',
+        //     })
+        //     .then((message) => console.log(message.sid));
+        // };
     </script>
   </body>
 
