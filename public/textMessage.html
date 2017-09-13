@@ -303,30 +303,26 @@
 
     $('#userGroupChoices').change(function() {
         var chosenUserGroup = $('#userGroupChoices').val();
-        var messageTemplate = {
-            "": "",
-            Welcome: "Dear " + chosenUserGroup + ", \n\nThanks for signing up to the best CRM in town!\n\n" + "Regards,\nTeam Exodus",
-            "Second Message": "Dear " + chosenUserGroup + ", \n\nHere's a second message!!\n\n" + "Regards,\nTeam Exodus",
-            "Another Message": "Dear " + chosenUserGroup + ", \n\nHere's another message!!\n\n" + "Regards,\nTeam Exodus",
-          };
-      });
-
-      $('#textMessageContentChoices').change(function() {
-        var chosenUserGroup = $('#userGroupChoices').val();
         var messageType = $('#textMessageContentChoices').val();
         $('#tmContent').html(renderMessage(messageType, chosenUserGroup));
       });
 
-      function renderMessage(messageType, chosenUserGroup) {
-        var messageTemplate = {
-          "": "",
-          Welcome: "Dear " + chosenUserGroup + ", \n\nThanks for signing up to the best CRM in town!\n\n" + "Regards,\nTeam Exodus",
-          "Second Message": "Dear " + chosenUserGroup + ", \n\nHere's a second message!!\n\n" + "Regards,\nTeam Exodus",
-          "Another Message": "Dear " + chosenUserGroup + ", \n\nHere's another message!!\n\n" + "Regards,\nTeam Exodus",
-        };
+    $('#textMessageContentChoices').change(function() {
+      var chosenUserGroup = $('#userGroupChoices').val();
+      var messageType = $('#textMessageContentChoices').val();
+      $('#tmContent').html(renderMessage(messageType, chosenUserGroup));
+    });
 
-        return messageTemplate[messageType];
+    function renderMessage(messageType, chosenUserGroup) {
+      var messageTemplate = {
+        "": "",
+        Welcome: "Dear " + chosenUserGroup + ", \n\nThanks for signing up to the best CRM in town!\n\n" + "Regards,\nTeam Exodus",
+        "Second Message": "Dear " + chosenUserGroup + ", \n\nHere's a second message!!\n\n" + "Regards,\nTeam Exodus",
+        "Another Message": "Dear " + chosenUserGroup + ", \n\nHere's another message!!\n\n" + "Regards,\nTeam Exodus",
       };
+
+      return messageTemplate[messageType];
+    };
 
 createDropDownOptionsUserGroup();
 createDropDownOptionsContent();
