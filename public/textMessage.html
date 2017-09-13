@@ -35,12 +35,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-          <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <!-- <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Dashboard">
             <a class="nav-link" href="#">
               <i class="fa fa-fw fa-dashboard"></i>
               <span class="nav-link-text">
                 Dashboard</span>
-            </a>
+            </a> -->
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Contact">
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
               <i class="fa fa-fw fa-comments"></i>
@@ -49,14 +49,14 @@
             </a>
             <ul class="sidenav-second-level collapse" id="collapseMulti">
               <li>
-              <a href="<LINK TO EMAIL PAGE>">
+              <a href="email.html">
               <i class="fa fa-fw fa-envelope"></i>
               <span class="nav-link-text">
                 Email</span>
             </a>
               </li>
               <li>
-              <a href="#">
+              <a href="textMessage.html">
               <i class="fa fa-fw fa-mobile"></i>
               <span class="nav-link-text">
                 Phone</span>
@@ -65,7 +65,7 @@
             </ul>
             </li>            
           </li>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Social Media">
+          <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Social Media">
             <a class="nav-link" href="#">
               <i class="fa fa-fw fa-facebook-square"></i>
               <span class="nav-link-text">
@@ -78,14 +78,14 @@
                 Blog Posts</span>
             </a>
           </li>
-          </li>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Donations">
+          </li> -->
+          <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Donations">
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2" data-parent="#exampleAccordion">
               <i class="fa fa-fw fa-area-chart"></i>
               <span class="nav-link-text">
                 Donations</span>
-            </a>
-            <ul class="sidenav-second-level collapse" id="collapseMulti2">
+            </a> -->
+            <!-- <ul class="sidenav-second-level collapse" id="collapseMulti2">
               <li>
               <a href="#">
               <i class="fa fa-fw fa-line-chart"></i>
@@ -108,15 +108,15 @@
             </a>              
             </li>
             </ul>
-          </li>
+          </li> -->
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Users">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="user.html">
               <i class="fa fa-fw fa-table"></i>
               <span class="nav-link-text">
                 Users</span>
             </a>
           </li>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+          <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
               <i class="fa fa-fw fa-file"></i>
               <span class="nav-link-text">
@@ -137,14 +137,14 @@
               </li>
             </ul>
           </li>
-          </li>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+          </li> -->
+          <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
             <a class="nav-link" href="#">
               <i class="fa fa-fw fa-link"></i>
               <span class="nav-link-text">
                 Link</span>
             </a>
-          </li>
+          </li> -->
         </ul>
         <ul class="navbar-nav sidenav-toggler">
           <li class="nav-item">
@@ -174,10 +174,8 @@
             Text Message
           </div>
           <div class="card-body">
-
             User Group:
               <select name="userGroup" id="userGroupChoices"></select>
-            
             Message:
                 <select id="textMessageContentChoices">
 
@@ -251,106 +249,84 @@
         "Bi-Monthly Users": "Bi-Monthly Users",
         "Monthly Users": "Monthly Users",
       };
+
       var userDropdown = "";
-      var chosenUserGroup = "";
+      var chosenUserGroup = "User Group";
       var messageType = "";
-
-          // Create buttons function by looping through object
-          function createDropDownOptionsUserGroup() {
-
-          for (var key in userGroup) {
-            if (userGroup.hasOwnProperty(key)) {
-
-          // creating and storing a option tag
-              var userDropdown = $("<option>");
-
-          // labeling the option with the key 
-              userDropdown.text(key);
-                
-              if (key) {        // if key has a value then run below. this doesnt write the empty value on the html
-                
-                // store the key value of message content
-                    var userDropdownValue = $("<p>").text(key + ": " + userGroup[key]);
-
-                // Setting the value attribute of the message to the option
-                      userDropdown.attr("value", userGroup[key]);
-              }
-
-                // appending the option to the html
-                    $("#userGroupChoices").append(userDropdown);
-                
-              }
-            }
-          };
-
-            $('#userGroupChoices').change(function() {
-              var chosenUserGroup = $('#userGroupChoices').val();
-              console.log(chosenUserGroup);
-              var messageTemplate = {
-                  "": "",
-                  Welcome: "Dear " + chosenUserGroup + ", \n\nThanks for signing up to the best CRM in town!\n\n" + "Regards,\nTeam Exodus",
-                  Yo: "Hey",
-                  "Another Message": "Dear " + chosenUserGroup + ", \n\nHere's another message!!" + "\n\nRegards,\nTeam Exodus",
-                };
-            });
-
-// render function to render message again
-// takes both userGroup and messageTemplate and returns correct string
-
+      var messageDropdown = "";
       var messageTemplate = {
-          "": "",
-          Welcome: "Dear " + chosenUserGroup + ", \n\nThanks for signing up to the best CRM in town!\n\n" + "Regards,\nTeam Exodus",
-          Yo: "Hey",
-          "Another Message": "Dear " + chosenUserGroup + ", \n\nHere's another message!!" + "\n\nRegards,\nTeam Exodus",
+        "": "",
+        Welcome: "Dear " + chosenUserGroup + ", \n\nThanks for signing up to the best CRM in town!\n\n" + "Regards,\nTeam Exodus",
+        "Second Message": "Dear " + chosenUserGroup + ", \n\nHere's a second message!!\n\n" + "Regards,\nTeam Exodus",
+        "Another Message": "Dear " + chosenUserGroup + ", \n\nHere's another message!!\n\n" + "Regards,\nTeam Exodus",
       };
 
-      var messageDropdown = "";
-
-      // Create buttons function by looping through object
-          function createDropDownOptionsContent() {
-
-          for (var key in messageTemplate) {
-            if (messageTemplate.hasOwnProperty(key)) {
-
-          // creating and storing a option tag
-              var messageDropdown = $("<option>");
-
-          // labeling the option with the key 
-              messageDropdown.text(key);
-                
-              if (key) {        // if key has a value then run below. this doesnt write the empty value on the html
-                
-                // store the key value of message content
-                    var messageDropdownValue = $("<p>").text(key + ": " + messageTemplate[key]);
-
-                // Setting the value attribute of the message to the option
-                      messageDropdown.attr("value", messageTemplate[key]);
-              }
-
-                // appending the option to the html
-                    $("#textMessageContentChoices").append(messageDropdown);
-
-                // appending the message templates to the html
-                    $("#textMessage-strings-appear-here").append(messageDropdownValue);
-                
-              }
+    function createDropDownOptionsUserGroup() {
+      for (var key in userGroup) {
+        if (userGroup.hasOwnProperty(key)) {
+      // creating and storing a option tag
+          var userDropdown = $("<option>");
+      // labeling the option with the key 
+          userDropdown.text(key);
+            if (key) {
+            // store the key value of message content
+                var userDropdownValue = $("<p>").text(key + ": " + userGroup[key]);
+            // Setting the value attribute of the message to the option
+                userDropdown.attr("value", userGroup[key]);
             }
+            // appending the option to the html
+            $("#userGroupChoices").append(userDropdown);
+          }
+        }
+      };
+
+    function createDropDownOptionsContent() {
+      for (var key in messageTemplate) {
+        if (messageTemplate.hasOwnProperty(key)) {
+      // creating and storing a option tag
+          var messageDropdown = $("<option>");
+      // labeling the option with the key 
+          messageDropdown.text(key);
+          if (key) {  
+            // store the key value of message content
+                var messageDropdownValue = $("<p>").text(key + ": " + messageTemplate[key]);
+            // Setting the value attribute of the message to the option
+                  messageDropdown.attr("value", key);
+          }
+            // appending the option to the html
+                $("#textMessageContentChoices").append(messageDropdown);
+            // appending the message templates to the html
+                $("#textMessage-strings-appear-here").append(messageDropdownValue);
+          }
+        }
+      };
+
+    $('#userGroupChoices').change(function() {
+        var chosenUserGroup = $('#userGroupChoices').val();
+        var messageTemplate = {
+            "": "",
+            Welcome: "Dear " + chosenUserGroup + ", \n\nThanks for signing up to the best CRM in town!\n\n" + "Regards,\nTeam Exodus",
+            "Second Message": "Dear " + chosenUserGroup + ", \n\nHere's a second message!!\n\n" + "Regards,\nTeam Exodus",
+            "Another Message": "Dear " + chosenUserGroup + ", \n\nHere's another message!!\n\n" + "Regards,\nTeam Exodus",
           };
+      });
 
-            $('#textMessageContentChoices').change(function() {
-              var messageType = $('#textMessageContentChoices').val();
-              $('#tmContent').html(renderMessage());
-            });
+      $('#textMessageContentChoices').change(function() {
+        var chosenUserGroup = $('#userGroupChoices').val();
+        var messageType = $('#textMessageContentChoices').val();
+        $('#tmContent').html(renderMessage(messageType, chosenUserGroup));
+      });
 
-            function renderMessage() {
-              var messageTemplate = {
-                  Welcome: "Dear " + chosenUserGroup + ", \n\nThanks for signing up to the best CRM in town!\n\n" + "Regards,\nTeam Exodus",
-                  Yo: "Hey",
-                  "Another Message": "Dear " + chosenUserGroup + ", \n\nHere's another message!!" + "Regards,\nTeam Exodus",
-              };
+      function renderMessage(messageType, chosenUserGroup) {
+        var messageTemplate = {
+          "": "",
+          Welcome: "Dear " + chosenUserGroup + ", \n\nThanks for signing up to the best CRM in town!\n\n" + "Regards,\nTeam Exodus",
+          "Second Message": "Dear " + chosenUserGroup + ", \n\nHere's a second message!!\n\n" + "Regards,\nTeam Exodus",
+          "Another Message": "Dear " + chosenUserGroup + ", \n\nHere's another message!!\n\n" + "Regards,\nTeam Exodus",
+        };
 
-              return messageTemplate[messageType];
-            }
+        return messageTemplate[messageType];
+      };
 
 createDropDownOptionsUserGroup();
 createDropDownOptionsContent();
