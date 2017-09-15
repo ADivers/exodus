@@ -251,7 +251,7 @@
       };
 
       var userDropdown = "";
-      var chosenUserGroup = "User Group";
+      var chosenUserGroup = "User-Group";
       var messageType = "";
       var messageDropdown = "";
       var messageTemplate = {
@@ -320,7 +320,6 @@
         "Second Message": "Dear " + chosenUserGroup + ", \n\nHere's a second message!!\n\n" + "Regards,\nTeam Exodus",
         "Another Message": "Dear " + chosenUserGroup + ", \n\nHere's another message!!\n\n" + "Regards,\nTeam Exodus",
       };
-
       return messageTemplate[messageType];
     };
 
@@ -341,7 +340,6 @@ createDropDownOptionsContent();
         //         to: '+19149809150',  // User Number(s)
         //         from: '+12027987897', // Twilio Number
         //         body: x,
-        //         // mediaUrl: 'https://climacons.herokuapp.com/clear.png',
         //     })
         //     .then((message) => console.log(message.sid));
         // };
