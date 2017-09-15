@@ -33,11 +33,8 @@ module.exports = function(app) {
       for(var i = 0; i < dbUser.length; i++){
         emailTo.push(dbUser[i].email_address);
       }
-      
-      // console.log(emailTo);
 
       var nodemailer = require('nodemailer');
-      // var template = require("/hero.html");
       var path = require('path');
       var fs = require('fs')
       
