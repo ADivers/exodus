@@ -38,7 +38,7 @@ var client = require('twilio')('AC754877e3fb03a0cd449bff55e9fcfea9', 'f33a199e73
       }
 
     client.sendMessage({        
-      to: '+19149809150',  // User Number(s)
+      to: '+19149809150',  // User Number(s) input textTo array here
       from: '+12027987897', // Twilio Number
       body: "Thanks for signing up for Exodus!",
     }, function(err, data) {
