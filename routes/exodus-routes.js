@@ -25,6 +25,19 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/sendText", function(req, res){
+    client.sendMessage({
+      to: '+19149809150',  // User Number(s)
+      from: '+12027987897', // Twilio Number
+      body: "Thanks for signing up for Exodus!",
+    }, function(err, data) {
+      if (err) {
+        console.log(err);
+        console.log(data);
+      };
+    });
+  });
+
   app.get("/email/api/send", function(req, res){
     db.User.findAll({attribute: ['email_address']}).then(function(dbUser){
       
