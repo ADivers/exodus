@@ -30,10 +30,10 @@ module.exports = function(app) {
 var client = require('twilio')('AC754877e3fb03a0cd449bff55e9fcfea9', 'f33a199e73ca24323a8a898629b69adb');
 
   app.get("/sendText", function(req, res){    
-    db.User.findAll({attribute: ['<PHONE NUMBER>']}).then(function(dbUser){
+    db.User.findAll({attribute: ['phone_number']}).then(function(dbUser){
       var textTo = [];
       for(var i = 0; i < dbUser.length; i++){
-        textTo.push(dbUser[i].<PHONE NUMBER>);
+        textTo.push(dbUser[i].phone_number);
       }
 
     client.sendMessage({        
@@ -47,6 +47,7 @@ var client = require('twilio')('AC754877e3fb03a0cd449bff55e9fcfea9', 'f33a199e73
       };
     });
   });
+});
 // -----Twilio
 
 
