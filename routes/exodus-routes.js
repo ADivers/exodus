@@ -25,8 +25,18 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/sendText", function(req, res){
-    client.sendMessage({
+
+  // ------Twilio
+var client = require('twilio')('AC754877e3fb03a0cd449bff55e9fcfea9', 'f33a199e73ca24323a8a898629b69adb');
+
+  app.get("/sendText", function(req, res){    
+    db.User.findAll({attribute: ['<PHONE NUMBER>']}).then(function(dbUser){
+      var textTo = [];
+      for(var i = 0; i < dbUser.length; i++){
+        textTo.push(dbUser[i].<PHONE NUMBER>);
+      }
+
+    client.sendMessage({        
       to: '+19149809150',  // User Number(s)
       from: '+12027987897', // Twilio Number
       body: "Thanks for signing up for Exodus!",
@@ -37,6 +47,8 @@ module.exports = function(app) {
       };
     });
   });
+// -----Twilio
+
 
   app.get("/email/api/send", function(req, res){
     db.User.findAll({attribute: ['email_address']}).then(function(dbUser){
