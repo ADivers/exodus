@@ -25,6 +25,83 @@ module.exports = function(app) {
     });
   });
 
+
+  // ------Twilio
+var client = require('twilio')('AC754877e3fb03a0cd449bff55e9fcfea9', 'f33a199e73ca24323a8a898629b69adb');
+
+  app.get("/sendText", function(req, res){    
+    db.User.findAll({attribute: ['phone_number']}).then(function(dbUser){
+      var textTo = [];
+      for(var i = 0; i < dbUser.length; i++){
+        textTo.push(dbUser[i].phone_number);
+      }
+
+    client.sendMessage({        
+      to: '+19149809150',  // User Number(s)
+      from: '+12027987897', // Twilio Number
+      body: "Thanks for signing up for Exodus!",
+    }, function(err, data) {
+      if (err) {
+        console.log(err);
+        console.log(data);
+      };
+    });
+  });
+});
+// -----Twilio
+
+
+  app.get("/email/api/send", function(req, res){
+    db.User.findAll({attribute: ['email_address']}).then(function(dbUser){
+      
+      var emailTo = [];
+
+      for(var i = 0; i < dbUser.length; i++){
+        emailTo.push(dbUser[i].email_address);
+      }
+
+      var nodemailer = require('nodemailer');
+      var path = require('path');
+      var fs = require('fs')
+      
+      var template = fs.readFileSync(path.join(__dirname, "../welcomeEmail.html"))
+      
+      var fromEmail = 'exoduscrmtest@gmail.com'; // add email of the gmail you are sending from
+      var password =  'exodustest'  // add gmail password
+      
+      emailTo = [
+          'divers1776@gmail.com',
+          'carljdor@gmail.com',
+          'ajnwosu@gmail.com',
+          'm11farrelly@gmail.com'
+      ]
+      
+      var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: fromEmail,
+          pass: password
+        }
+      });
+      
+      var mailOptions = {
+        from: fromEmail,
+        to: emailTo,
+        subject: 'Test Email',
+        html: template
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+      res.json(emailTo);
+    });
+  });
+
   // Get rotue for retrieving a single user
   app.get("/users/:id", function(req, res) {
 
