@@ -241,7 +241,7 @@
           var contactList = $("#exampleSelect2").val()
           var emailTemplate = $('#templateEmail').val()
           $.get("/email/api/send", {contactList: contactList, emailTemplate: emailTemplate}, function( data ) {
-            alert( "Email was send." );
+            alert( "Email was sent." );
           });
         });
       });
