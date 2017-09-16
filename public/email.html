@@ -237,8 +237,8 @@
       $(document).ready(function()
       { 
         $('#btn-sendEmail').click(function() {
-          console.log("got clicked")
-          $.get("/email/api/send", function( data ) {
+          var contactList = $("#exampleSelect2").val()
+          $.get("/email/api/send", {contactList: contactList}, function( data ) {
             alert( "Email was send." );
           });
         });

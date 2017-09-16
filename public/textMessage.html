@@ -225,8 +225,8 @@
     <script>
       var userGroup = {
         "": "",
-        "Weekly Users": "Users",
-        "Monthly Users": "Users",
+        "Weekly Users": "Weekly",
+        "Monthly Users": "Monthly",
       };
 
       var userDropdown = "";
@@ -308,7 +308,9 @@ createDropDownOptionsContent();
 $(document).ready(function() {
   $('#btn-sendTextMessage').click(function() {
     var sendMessage = $('#tmContent').val();
-    $.get('/sendText', {message:sendMessage}, function(data) {
+    var contactList = $("#userGroupChoices").val();
+
+    $.get('/sendText', {message:sendMessage, contactList: contactList}, function(data) {
       if (data) {
         alert('Text Message Sent!');
       };

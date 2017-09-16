@@ -32,7 +32,11 @@ var client = require('twilio')('AC754877e3fb03a0cd449bff55e9fcfea9', 'f33a199e73
 
   app.get("/sendText", function(req, res){    
     console.log(req.query.message);
-    db.User.findAll({attribute: ['phone_number']}).then(function(dbUser){
+    db.User.findAll(
+      {
+        attribute: ['phone_number'],
+        where: {contact_list: req.query.contactList}
+      }).then(function(dbUser){
       for(var i = 0; i < dbUser.length; i++){
         client.messages
         .create({        
@@ -53,7 +57,11 @@ var client = require('twilio')('AC754877e3fb03a0cd449bff55e9fcfea9', 'f33a199e73
 
 
   app.get("/email/api/send", function(req, res){
-    db.User.findAll({attribute: ['email_address']}).then(function(dbUser){
+    db.User.findAll(
+      {
+        attribute: ['email_address'],
+        where: {contact_list:req.query.contactList}
+      }).then(function(dbUser){
       
       var emailTo = [];
 
