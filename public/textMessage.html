@@ -110,7 +110,7 @@
             </ul>
           </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Users">
-            <a class="nav-link" href="user.html">
+            <a class="nav-link" href="users">
               <i class="fa fa-fw fa-table"></i>
               <span class="nav-link-text">
                 Users</span>
@@ -226,13 +226,13 @@
     <script>
       var userGroup = {
         "": "",
-        "Weekly Users": "Weekly Users",
-        "Bi-Monthly Users": "Bi-Monthly Users",
-        "Monthly Users": "Monthly Users",
+        "Weekly Users": "Users",
+        "Bi-Monthly Users": "Users",
+        "Monthly Users": "Users",
       };
 
       var userDropdown = "";
-      var chosenUserGroup = "User Group";
+      var chosenUserGroup = "Users";
       var messageType = "";
       var messageDropdown = "";
       var messageTemplate = {
@@ -301,12 +301,22 @@
         "Second Message": "Dear " + chosenUserGroup + ", \n\nHere's a second message!!\n\n" + "Regards,\nTeam Exodus",
         "Another Message": "Dear " + chosenUserGroup + ", \n\nHere's another message!!\n\n" + "Regards,\nTeam Exodus",
       };
-
       return messageTemplate[messageType];
     };
 
 createDropDownOptionsUserGroup();
 createDropDownOptionsContent();
+
+$(document).ready(function() {
+  $('#btn-sendTextMessage').click(function() {
+    var sendMessage = $('#tmContent').val();
+    $.get('/sendText', {message:sendMessage}, function(data) {
+      if (data) {
+        alert('Text Message Sent!');
+      };
+    });
+  });
+});
 
         // function textContentCapture() {
         //     var x = document.getElementById("tmContent").value;

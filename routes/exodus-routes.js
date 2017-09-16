@@ -31,22 +31,22 @@ module.exports = function(app) {
 var client = require('twilio')('AC754877e3fb03a0cd449bff55e9fcfea9', 'f33a199e73ca24323a8a898629b69adb');
 
   app.get("/sendText", function(req, res){    
+    console.log(req.query.message);
     db.User.findAll({attribute: ['phone_number']}).then(function(dbUser){
-      var textTo = [];
       for(var i = 0; i < dbUser.length; i++){
-        textTo.push(dbUser[i].phone_number);
-      }
-
-    client.sendMessage({        
-      to: '+19149809150',  // User Number(s) input textTo array here
-      from: '+12027987897', // Twilio Number
-      body: "Thanks for signing up for Exodus!",
-    }, function(err, data) {
-      if (err) {
-        console.log(err);
-        console.log(data);
+        client.messages
+        .create({        
+          to: '+1' + dbUser[i].phone_number,  // User Number(s) input textTo array here
+          from: '+12028739354', // Twilio Number
+          body: req.query.message,
+        }, function(err, data) {
+          if (err) {
+            console.log(err);
+            console.log(data);
+          };
+        });
       };
-    });
+      res.json(dbUser);      
   });
 });
 // -----Twilio
