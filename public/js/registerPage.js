@@ -10,7 +10,8 @@ $(document).ready(function () {
             last_name: $('#exampleInputLastName').val(),
             email_address: $('#exampleInputEmail1').val(),
             phone_number: $('#exampleInputPhoneNumber1').val(),
-            contact_mode: contact,
+            contact_mode: $('#exampleContact1').val(),
+            contact_list: $('#exampleContactList').val()
         }
         $.post('/users', data)
     });

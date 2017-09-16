@@ -21,8 +21,12 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: true
     },
     contact_mode: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    contact_list: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
 
