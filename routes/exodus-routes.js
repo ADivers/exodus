@@ -37,7 +37,7 @@ var client = require('twilio')('AC754877e3fb03a0cd449bff55e9fcfea9', 'f33a199e73
     db.User.findAll(
       {
         attribute: ['phone_number'],
-        where: {contact_list: req.query.contactList}
+        where: {contact_list: req.query.contactList, contact_mode: 'Text'}
       }).then(function(dbUser){
       for(var i = 0; i < dbUser.length; i++){
         client.messages
@@ -63,7 +63,7 @@ var client = require('twilio')('AC754877e3fb03a0cd449bff55e9fcfea9', 'f33a199e73
     db.User.findAll(
       {
         attribute: ['email_address'],
-        where: {contact_list:req.query.contactList}
+        where: {contact_list:req.query.contactList, contact_mode: 'Email'}
       }).then(function(dbUser){
       
       var emailTo = [];
