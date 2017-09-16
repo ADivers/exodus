@@ -289,7 +289,7 @@
       });
 
     $('#textMessageContentChoices').change(function() {
-      var chosenUserGroup = $('#userGroupChoices').val();
+      var chosenUserGroup = "User";
       var messageType = $('#textMessageContentChoices').val();
       $('#tmContent').html(renderMessage(messageType, chosenUserGroup));
     });
