@@ -154,7 +154,7 @@
           </div>
         <br>
           <h5>Select Email Template</h5>
-          <select class="selectpicker">
+          <select class="selectpicker" id="templateEmail">
               <option>Welcome</option>
               <option>Newsletter</option>
               <option>Monthly</option>
@@ -238,7 +238,8 @@
       { 
         $('#btn-sendEmail').click(function() {
           var contactList = $("#exampleSelect2").val()
-          $.get("/email/api/send", {contactList: contactList}, function( data ) {
+          var emailTemplate = $('#templateEmail').val()
+          $.get("/email/api/send", {contactList: contactList, emailTemplate: emailTemplate}, function( data ) {
             alert( "Email was send." );
           });
         });

@@ -73,7 +73,7 @@ var client = require('twilio')('AC754877e3fb03a0cd449bff55e9fcfea9', 'f33a199e73
       var path = require('path');
       var fs = require('fs')
       
-      var template = fs.readFileSync(path.join(__dirname, "../welcomeEmail.html"))
+      var template = fs.readFileSync(path.join(__dirname, "../templates/" + req.query.emailTemplate + ".html"))
       
       var fromEmail = 'exoduscrmtest@gmail.com'; // add email of the gmail you are sending from
       var password =  'exodustest'  // add gmail password
