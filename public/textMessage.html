@@ -35,13 +35,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-          <!-- <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Dashboard">
-            <a class="nav-link" href="#">
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            <a class="nav-link" href="index.html">
               <i class="fa fa-fw fa-dashboard"></i>
               <span class="nav-link-text">
                 Dashboard</span>
-            </a> -->
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Contact">
+            </a>
+          <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Contact">
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
               <i class="fa fa-fw fa-comments"></i>
               <span class="nav-link-text">
@@ -65,7 +65,7 @@
             </ul>
             </li>            
           </li>
-          <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Social Media">
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Social Media">
             <a class="nav-link" href="#">
               <i class="fa fa-fw fa-facebook-square"></i>
               <span class="nav-link-text">
@@ -78,14 +78,14 @@
                 Blog Posts</span>
             </a>
           </li>
-          </li> -->
-          <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Donations">
+          </li>
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Donations">
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2" data-parent="#exampleAccordion">
               <i class="fa fa-fw fa-area-chart"></i>
               <span class="nav-link-text">
                 Donations</span>
-            </a> -->
-            <!-- <ul class="sidenav-second-level collapse" id="collapseMulti2">
+            </a> 
+            <ul class="sidenav-second-level collapse" id="collapseMulti2">
               <li>
               <a href="#">
               <i class="fa fa-fw fa-line-chart"></i>
@@ -108,43 +108,22 @@
             </a>              
             </li>
             </ul>
-          </li> -->
+          </li>
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Users">
-            <a class="nav-link" href="user.html">
+            <a class="nav-link" href="users">
               <i class="fa fa-fw fa-table"></i>
               <span class="nav-link-text">
                 Users</span>
             </a>
           </li>
-          <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-              <i class="fa fa-fw fa-file"></i>
-              <span class="nav-link-text">
-                Example Pages</span>
-            </a>
-            <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-              <li>
-                <a href="login.html">Login Page</a>
-              </li>
-              <li>
-                <a href="register.html">Registration Page</a>
-              </li>
-              <li>
-                <a href="forgot-password.html">Forgot Password Page</a>
-              </li>
-              <li>
-                <a href="blank.html">Blank Page</a>
-              </li>
-            </ul>
           </li>
-          </li> -->
-          <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-            <a class="nav-link" href="#">
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+            <a class="nav-link" href="https://www.nkinusa.org/">
               <i class="fa fa-fw fa-link"></i>
               <span class="nav-link-text">
-                Link</span>
+                Company Homepage</span>
             </a>
-          </li> -->
+          </li>
         </ul>
         <ul class="navbar-nav sidenav-toggler">
           <li class="nav-item">
@@ -182,7 +161,8 @@
                 </select>
                 <div id="textMessage-strings-appear-here"></div>
                 <textarea name="tmContent" id="tmContent" cols="30" rows="10"></textarea>
-                <button id="textSubmit" onclick="textContentCapture()">Submit</button>
+                <br>
+                <button type="button" id="btn-sendTextMessage" class="btn btn-secondary btn-lg">Send Text Message</button>                
                 <div id="postText"></div>
             </div>
         </div>
@@ -245,13 +225,14 @@
     <script>
       var userGroup = {
         "": "",
-        "Weekly Users": "Weekly Users",
-        "Bi-Monthly Users": "Bi-Monthly Users",
-        "Monthly Users": "Monthly Users",
+        "Weekly Users": "Users",
+        "Monthly Users": "Users",
       };
 
       var userDropdown = "";
-      var chosenUserGroup = "User-Group";
+
+      var chosenUserGroup = "Users";
+      
       var messageType = "";
       var messageDropdown = "";
       var messageTemplate = {
@@ -326,23 +307,18 @@
 createDropDownOptionsUserGroup();
 createDropDownOptionsContent();
 
-        // function textContentCapture() {
-        //     var x = document.getElementById("tmContent").value;
-        //     console.log(x);
 
-        //     // Twilio Credentials
-        //     const accountSid = 'AC754877e3fb03a0cd449bff55e9fcfea9';
-        //     const authToken = 'f33a199e73ca24323a8a898629b69adb';
-        //     // require the Twilio module and create a REST client
-        //     const client = require('twilio')(accountSid, authToken);
-        //     client.messages
-        //     .create({
-        //         to: '+19149809150',  // User Number(s)
-        //         from: '+12027987897', // Twilio Number
-        //         body: x,
-        //     })
-        //     .then((message) => console.log(message.sid));
-        // };
+$(document).ready(function() {
+  $('#btn-sendTextMessage').click(function() {
+    var sendMessage = $('#tmContent').val();
+    $.get('/sendText', {message:sendMessage}, function(data) {
+      if (data) {
+        alert('Text Message Sent!');
+      };
+    });
+  });
+});
+
     </script>
   </body>
 

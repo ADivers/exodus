@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var User = sequelize.define("User", {
     first_name: {
       type: DataTypes.STRING,
@@ -17,13 +17,16 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     phone_number: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      len: [10]
+      type: DataTypes.STRING,
+      allowNull: true
     },
     contact_mode: {
-      type: DataTypes.BOOLEAN                     ,
-      allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    contact_list: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   });
 
