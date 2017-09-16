@@ -230,7 +230,9 @@
       };
 
       var userDropdown = "";
+
       var chosenUserGroup = "Users";
+      
       var messageType = "";
       var messageDropdown = "";
       var messageTemplate = {
@@ -305,6 +307,7 @@
 createDropDownOptionsUserGroup();
 createDropDownOptionsContent();
 
+
 $(document).ready(function() {
   $('#btn-sendTextMessage').click(function() {
     var sendMessage = $('#tmContent').val();
@@ -317,6 +320,7 @@ $(document).ready(function() {
     });
   });
 });
+
     </script>
   </body>
 
