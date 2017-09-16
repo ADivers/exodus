@@ -26,8 +26,10 @@ module.exports = function(app) {
   });
 
 
+
   // ------Twilio Sending initial text message.
   // Once the user responds with a text, the serverTextMessage.js file will send the user a reply
+  // twilio account login. email: m11farrelly@gmail.com password: gwbootcamptest
 var client = require('twilio')('AC754877e3fb03a0cd449bff55e9fcfea9', 'f33a199e73ca24323a8a898629b69adb');
 
   app.get("/sendText", function(req, res){    
@@ -51,6 +53,7 @@ var client = require('twilio')('AC754877e3fb03a0cd449bff55e9fcfea9', 'f33a199e73
         });
       };
       res.json(dbUser);      
+
   });
 });
 // -----Twilio
