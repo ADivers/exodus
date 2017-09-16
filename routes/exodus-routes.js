@@ -43,13 +43,6 @@ module.exports = function(app) {
       var fromEmail = 'exoduscrmtest@gmail.com'; // add email of the gmail you are sending from
       var password =  'exodustest'  // add gmail password
       
-      emailTo = [
-          'divers1776@gmail.com',
-          'carljdor@gmail.com',
-          'ajnwosu@gmail.com',
-          'm11farrelly@gmail.com'
-      ]
-      
       var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
